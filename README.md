@@ -79,10 +79,41 @@ When words are inserted in sorted order or share very long common prefixes, the 
 As shown in our benchmark plot (see above), the total time for N insertions or searches increases linearly with N, confirming that the per-operation time remains roughly constant at O(L) for our data. This empirical result demonstrates that, under average-case conditions, our TST implementation performs as expected: each word insertion and search takes time proportional to the word length, independent of the overall dataset size.
 
 ## Files
+```
+📁 Project Structure
+├── 📁 src/
+│   ├── 📄 tst.py                           # Main TST implementation (TSTNode & TernarySearchTree classes)
+│   ├── 📄 benchmark.py                     # Performance testing script with matplotlib visualization
+│   └── 📄 job_benchmark.slurm              # SLURM job script for HPC cluster benchmarking
+├── 📁 tests/
+│   └── 📄 test_tst.py                      # Comprehensive test suite with pytest
+├── 📁 data/
+│   ├── 📄 insert_words.txt                 # Sample words for testing insertion
+│   ├── 📄 not_insert_words.txt             # Words for negative test cases
+│   └── 📄 corncob_lowercase.txt            # Large dictionary (~58K words) for benchmarking
+├── 📁 hpc_results/
+│   ├── 📄 benchmark_plot.png               # HPC performance visualization
+│   └── 📄 slurm-58201158.out               # SLURM job output log
+├── 📄 .gitignore                          # Git ignore rules
+└── 📄 README.md                           # This documentation
+```
 
-- `src/tst.py` - Main code
-- `tests/test_tst.py` - Tests
-- `data/` - Sample word files
+### Core Implementation:
+- **`src/tst.py`** - TSTNode and TernarySearchTree classes
+- **`src/benchmark.py`** - Performance measurement script
+- **`src/job_benchmark.slurm`** - HPC cluster job script
+
+### Testing:
+- **`tests/test_tst.py`** - Comprehensive test suite with pytest
+
+### Data Files:
+- **`data/insert_words.txt`** - Test words for insertion
+- **`data/not_insert_words.txt`** - Negative test cases
+- **`data/corncob_lowercase.txt`** - Large dictionary for benchmarking
+
+### HPC Results:
+- **`hpc_results/benchmark_plot.png`** - Performance charts from HPC cluster
+- **`hpc_results/slurm-58201158.out`** - SLURM job execution log
 
 ## Testing
 
