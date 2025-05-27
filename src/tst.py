@@ -46,3 +46,26 @@ class TernarySearchTree:
         if not word:
             return
         self.root = self._insert(self.root, word, 0)
+    def _search(self, node, word: str, idx: int) -> bool:
+        """
+        Helper function for recursive search.
+        """
+        if node is None:
+            return False
+        char = word[idx]
+        if char < node.char:
+            return self._search(node.left, word, idx)
+        elif char > node.char:
+            return self._search(node.right, word, idx)
+        else:
+            if idx + 1 == len(word):
+                return node.is_end_of_word
+            return self._search(node.middle, word, idx + 1)
+
+    def search(self, word: str) -> bool:
+        """
+        Return True if word exists in the tree.
+        """
+        if not word:
+            return False
+        return self._search(self.root, word, 0)
