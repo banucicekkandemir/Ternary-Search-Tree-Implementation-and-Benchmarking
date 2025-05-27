@@ -70,7 +70,7 @@ class TernarySearchTree:
             return False
         return self._search(self.root, word, 0)
     
-    
+
     def _all_strings(self, node, prefix, result):
         """
         Recursive helper to collect all words in the TST.
@@ -91,3 +91,15 @@ class TernarySearchTree:
         result = []
         self._all_strings(self.root, '', result)
         return sorted(result)
+    
+    def __len__(self):
+        """
+        Return the number of words stored in the tree.
+        """
+        return len(self.all_strings())
+
+    def __str__(self):
+        """
+        Return a string representation of all words in the tree.
+        """
+        return ', '.join(self.all_strings())
