@@ -44,6 +44,20 @@ with open('data/insert_words.txt', 'r') as f:
         if word:
             tree.insert(word)
 ```
+## Performance
+
+### Time Complexity
+| Operation | Time Complexity | Description |
+|-----------|----------------|-------------|
+| *Insert* | O(L) | L = length of word |
+| *Search* | O(L) | L = length of word |
+| *Get All Words* | O(N × L) | N = number of words, L = average word length |
+
+### Space Complexity
+- *Overall*: O(N × L) where N = number of unique words, L = average word length
+- *Efficient*: Words sharing prefixes share nodes, reducing actual memory usage
+- *Per Node*: Each node stores one character + 3 pointers + 1 boolean flag
+
 
 ## Files
 
