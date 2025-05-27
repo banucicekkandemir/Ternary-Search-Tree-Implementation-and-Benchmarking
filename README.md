@@ -58,6 +58,25 @@ with open('data/insert_words.txt', 'r') as f:
 - *Efficient*: Words sharing prefixes share nodes, reducing actual memory usage
 - *Per Node*: Each node stores one character + 3 pointers + 1 boolean flag
 
+## Best, Average, and Worst Case Scenarios
+
+### Best Case: O(L)
+When words are inserted in random order with well-distributed characters, the TST remains balanced. Each insertion and search takes O(L) time where L is the word length.
+
+### Average Case: O(L) 
+For typical datasets with diverse vocabulary and no extreme prefix overlap, performance stays close to the best case. Each operation takes O(L) time.
+
+### Worst Case: O(L × h)
+When words are inserted in sorted order or share very long common prefixes, the tree can become unbalanced with height h approaching N. In extreme cases, operations can take O(L × log N) to O(L × N) time, where the tree degrades toward a linked-list structure.
+
+### Benchmark Results
+
+![TST Performance Benchmark](hpc_results/benchmark_plot.png)
+
+*Figure: Performance comparison of insert and search operations with increasing dataset size*
+
+### Benchmark Results Interpretation
+As shown in our benchmark plot (see above), the total time for N insertions or searches increases linearly with N, confirming that the per-operation time remains roughly constant at O(L) for our data. This empirical result demonstrates that, under average-case conditions, our TST implementation performs as expected: each word insertion and search takes time proportional to the word length, independent of the overall dataset size.
 
 ## Files
 
